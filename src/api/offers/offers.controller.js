@@ -63,7 +63,7 @@ module.exports = {
     }
   },
 
-  async deleteTodo(req, res) {
+  async deleteOffer(req, res) {
     try {
       const { offerId } = req.params;
 
