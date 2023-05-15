@@ -29,14 +29,14 @@ const jobSchema = new Schema(
       require: [true, "image is required"],
     },
     requires: {
-      type: String,
+      type: [String],
       require: [true, "Description is required"],
       minlength: [4, "Description is short"],
     },
     qualifications: {
-      type: String,
-      require: [true, "Description is required"],
-      minlength: [4, "Description is short"],
+      type: [String],
+      required: [true, "Qualifications are required"],
+      minlength: [1, "At least one qualification is required"],
     },
   },
   {

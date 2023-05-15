@@ -32,7 +32,6 @@ const userSchema = new Schema(
 
     phone: {
       type: String,
-
       minlength: [10, "Phone must have 10 characters"],
     },
 
