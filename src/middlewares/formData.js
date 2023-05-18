@@ -1,7 +1,7 @@
 const busboy = require("busboy");
 const cloudinary = require("cloudinary").v2;
 
-// Setup
+// Configuration
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -22,22 +22,25 @@ const formData = (req, res, next) => {
   const bb = busboy({ headers: req.headers });
   req.body = {};
 
-  //Capture the parts that are not a file
+  // Capture the parts that are not a file
   bb.on("field", (key, val) => {
     req.body[key] = val;
   });
 
-  //capture the parts that are a file
+  // Capture the parts that are a file
   bb.on("file", (key, stream) => {
     uploadingFile = true;
     uploadingCount++;
+    console.log("testing");
     const cloud = cloudinary.uploader.upload_stream(
-      { upload_preset: "jobify" },
-      (err, res) => {
-        if (err) throw new Error("Something went wrong");
-
-        console.log("response", res);
-        req.body[key] = res?.secure_url;
+      { upload_preset: "jobify-preset" },
+      (err, result) => {
+        if (err) {
+          console.error("Cloudinary upload error:", err);
+          throw new Error("Something went wrong");
+        }
+        console.log("Cloudinary upload result:", result);
+        req.body[key] = result?.secure_url;
         uploadingFile = false;
         uploadingCount--;
         done();

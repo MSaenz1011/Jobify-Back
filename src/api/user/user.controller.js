@@ -82,6 +82,27 @@ module.exports = {
     }
   },
 
+  async updateUser(req, res) {
+    try {
+      const { userId } = req.params;
+      const updatedFields = req.body;
+
+      const user = await User.findByIdAndUpdate(userId, updatedFields, {
+        new: true,
+      });
+
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
+      }
+
+      res.status(200).json({ message: "User updated", data: user });
+    } catch (error) {
+      res
+        .status(400)
+        .json({ message: "Failed to update user", error: error.message });
+    }
+  },
+
   createUser(req, res) {
     const data = req.body;
 
