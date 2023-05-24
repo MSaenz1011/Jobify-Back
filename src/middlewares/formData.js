@@ -31,9 +31,8 @@ const formData = (req, res, next) => {
   bb.on("file", (key, stream) => {
     uploadingFile = true;
     uploadingCount++;
-    console.log("testing");
     const cloud = cloudinary.uploader.upload_stream(
-      { upload_preset: "jobify-preset" },
+      { resource_type: "auto", upload_preset: "jobify-preset" },
       (err, result) => {
         if (err) {
           console.error("Cloudinary upload error:", err);

@@ -24,6 +24,48 @@ const offerSchema = new Schema(
       ref: "user",
       required: true,
     },
+
+    candidateName: {
+      type: String,
+      required: [true, "Candidate name is required"],
+    },
+    candidateEmail: {
+      type: String,
+      required: [true, "Candidate email is required"],
+    },
+    candidateResume: {
+      type: String,
+      required: [true, "Candidate resume is required"],
+    },
+    candidatePhone: {
+      type: String,
+      required: [true, "Candidate phone is required"],
+    },
+    candidateLinkedIn: {
+      type: String,
+    },
+    candidateEducation: {
+      type: String,
+      required: [true, "Candidate resume is required"],
+    },
+
+    candidateTechnologies: {
+      type: String,
+      required: [true, "Candidate resume is required"],
+    },
+    candidateSkills: {
+      type: String,
+      required: [true, "Candidate resume is required"],
+    },
+    candidateIntentions: {
+      type: String,
+      required: [true, "Candidate resume is required"],
+    },
+
+    candidatePDf: {
+      type: String,
+      required: [true, "Candidate resume is required"],
+    },
   },
   {
     timestamps: true,
