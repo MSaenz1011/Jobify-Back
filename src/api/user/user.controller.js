@@ -24,7 +24,7 @@ module.exports = {
       });
     } catch (error) {
       res
-        .status(400)
+        .status(500)
         .json({ message: "User could not created", error: error.message });
     }
   },
@@ -52,7 +52,7 @@ module.exports = {
         .json({ message: "User login successfully", data: { email, token } });
     } catch (error) {
       res
-        .status(400)
+        .status(500)
         .json({ message: "User could not login", error: error.message });
     }
   },
@@ -66,7 +66,7 @@ module.exports = {
 
       res.status(201).json({ message: "Users found", data: users });
     } catch (err) {
-      res.status(400).json(err);
+      res.status(500).json(err);
     }
   },
 
@@ -78,7 +78,7 @@ module.exports = {
 
       res.status(201).json({ message: "User found", data: user });
     } catch (err) {
-      res.status(400).json(err);
+      res.status(500).json(err);
     }
   },
 
@@ -98,7 +98,7 @@ module.exports = {
       res.status(200).json({ message: "User updated", data: user });
     } catch (error) {
       res
-        .status(400)
+        .status(500)
         .json({ message: "Failed to update user", error: error.message });
     }
   },
@@ -115,7 +115,7 @@ module.exports = {
         res.status(201).json({ message: "User created", data: user });
       })
       .catch((err) => {
-        res.status(400).json(err);
+        res.status(500).json(err);
       });
   },
 };

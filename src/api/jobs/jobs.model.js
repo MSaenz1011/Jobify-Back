@@ -38,6 +38,10 @@ const jobSchema = new Schema(
       required: [true, "Qualifications are required"],
       minlength: [1, "At least one qualification is required"],
     },
+    availability: {
+      type: Boolean,
+      require: [true, "Need to define avaiability"],
+    },
   },
   {
     timestamps: true,

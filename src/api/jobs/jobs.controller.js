@@ -9,7 +9,7 @@ module.exports = {
 
       res.status(201).json({ message: "Job created", data: job });
     } catch (error) {
-      res.status(400).json({ message: "Job cannot be created", data: error });
+      res.status(500).json({ message: "Job cannot be created", data: error });
     }
   },
 
@@ -20,7 +20,7 @@ module.exports = {
 
       res.status(201).json({ message: "Jobs founded", data: jobs });
     } catch (error) {
-      res.status(400).json({ message: "Jobs not founded", data: error });
+      res.status(500).json({ message: "Jobs not founded", data: error });
     }
   },
 
@@ -32,7 +32,7 @@ module.exports = {
 
       res.status(201).json({ message: "Job founded", data: job });
     } catch (error) {
-      res.status(400).json({ message: "Job not founded", data: error });
+      res.status(500).json({ message: "Job not founded", data: error });
     }
   },
 
@@ -46,7 +46,7 @@ module.exports = {
       res.status(201).json({ message: "Job updated", data: job });
     } catch (error) {
       res
-        .status(400)
+        .status(500)
         .json({ message: "Job could not be updated", data: error });
     }
   },
@@ -61,7 +61,7 @@ module.exports = {
       res.status(201).json({ message: "Job deleted", data: job });
     } catch (error) {
       res
-        .status(400)
+        .status(500)
         .json({ message: "Job could not be deleted", data: error });
     }
   },

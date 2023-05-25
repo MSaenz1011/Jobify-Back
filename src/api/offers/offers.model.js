@@ -57,10 +57,6 @@ const offerSchema = new Schema(
       type: String,
       required: [true, "Candidate resume is required"],
     },
-    candidateIntentions: {
-      type: String,
-      required: [true, "Candidate resume is required"],
-    },
 
     candidatePDf: {
       type: String,
