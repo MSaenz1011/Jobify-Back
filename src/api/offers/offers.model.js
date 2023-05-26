@@ -46,21 +46,21 @@ const offerSchema = new Schema(
     },
     candidateEducation: {
       type: String,
-      required: [true, "Candidate resume is required"],
+      required: [true, "Candidate education is required"],
     },
 
     candidateTechnologies: {
       type: String,
-      required: [true, "Candidate resume is required"],
+      required: [true, "Candidate Technologies is required"],
     },
     candidateSkills: {
       type: String,
-      required: [true, "Candidate resume is required"],
+      required: [true, "Candidate skills is required"],
     },
 
-    candidatePDf: {
+    candidatePDF: {
       type: String,
-      required: [true, "Candidate resume is required"],
+      required: [true, "Candidate pdf is required"],
     },
   },
   {

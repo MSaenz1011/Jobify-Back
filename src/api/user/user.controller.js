@@ -74,7 +74,11 @@ module.exports = {
     try {
       const { userId } = req.params;
 
-      const user = await User.findById(userId);
+      const user = await User.findById(userId).populate({
+        path: "offers",
+        select:
+          "title company country img candidateName candidateResume candidatePhone candidateLinkedIn candidateEducation  candidateTechnologies candidateSkills candidatePDF",
+      });
 
       res.status(201).json({ message: "User found", data: user });
     } catch (err) {

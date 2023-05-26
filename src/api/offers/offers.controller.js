@@ -1,24 +1,26 @@
 const Offer = require("./offers.model");
 const User = require("../user/user.model");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   async createOffer(req, res) {
     try {
       const data = req.body;
       const { authorization } = req.headers;
-      const userId = authorization;
+      const [_, token] = authorization.split(" ");
+      const { id } = jwt.verify(token, process.env.SECRET_KEY);
 
-      const user = await User.findById(userId);
+      const user = await User.findById(id);
 
       if (!user) {
         throw new Error("user not found");
       }
 
-      const offer = await Offer.create({ ...data, user: userId });
+      const offer = await Offer.create({ ...data, user: id });
       user.offers.unshift(offer);
 
       await user.save({ validateBeforeSave: false });
-      res.status(201).json({ message: "offer applied (created)", data: todo });
+      res.status(201).json({ message: "offer applied (created)", data: offer });
     } catch (error) {
       res.status(500).json({
         message: "offer could not be applied (created)",
